@@ -25,7 +25,7 @@ Build it with:
 
 Run it with:
 
-    docker run -u you -v $HOME/code:/home/you/code --name centos-you --rm -ti centos-you
+    docker run -u you -v $HOME/centos-you-home:/home/you --name centos-you --rm -ti centos-you
 
 You can attach to the container as root:
 
