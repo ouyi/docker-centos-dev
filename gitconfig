@@ -1,0 +1,7 @@
+[core]
+    editor = vim
+    whitespace = cr-at-eol
+[color]
+    ui = true
+[alias]
+    lg = log --color --graph --pretty=format:'%C(red)%h %C(green)%cd%C(yellow)%d %C(bold blue)%an%Creset %n%w(120,2,2)%s' --date=iso
