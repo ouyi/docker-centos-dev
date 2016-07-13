@@ -8,7 +8,7 @@ RUN yum install -y epel-release man which tree bash-completion vim-enhanced git 
 
 RUN yum -y install python-pip python-paramiko && yum clean all
 
-RUN pip install radon pylint pep8 ansible awscli
+RUN pip install radon pylint pep8 ansible awscli datadog
 
 COPY gitconfig  /root/.gitconfig
 COPY vimrc /root/.vimrc
