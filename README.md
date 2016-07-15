@@ -11,23 +11,24 @@ A dockerized development box based on centos 7. More tools will be added.
 
 Create a Dockerfile similar to this:
 
-    FROM docker-centos-dev
-    MAINTAINER you
+    FROM ouyi/docker-centos-dev
+    MAINTAINER username
 
     RUN chmod 4755 /usr/bin/ping
 
-    RUN useradd you
-    WORKDIR /home/you
+    RUN usernameadd username
+    WORKDIR /home/username
 
 Build it with:
     
-    docker build . -t centos-you
+    docker build . -t username/centos-username
 
 Run it with:
 
-    docker run -u you -v $HOME/centos-you-home:/home/you --name centos-you --rm -ti centos-you
+    docker run -u username -v $HOME/home_username:/home/username --name centos-username --rm -ti username/centos-username
 
 You can attach to the container as root:
 
-    docker exec -u 0 -it centos-you bash
+    docker exec -u 0 -it centos-username bash
     
+You may want to change username to whatever name you prefer.
