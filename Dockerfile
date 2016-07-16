@@ -1,5 +1,5 @@
 FROM centos:latest
-MAINTAINER Yi Ou email: ouyi@gmx.de
+MAINTAINER Yi Ou
 
 # Update the image with the latest packages (recommended)
 RUN yum update -y && yum clean all
