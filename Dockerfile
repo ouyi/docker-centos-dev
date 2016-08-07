@@ -51,4 +51,7 @@ ENV ANTLR_JAR antlr-4.5.3-complete.jar
 RUN curl http://www.antlr.org/download/${ANTLR_JAR} -o /usr/local/lib/${ANTLR_JAR}
 COPY antlr4.sh /etc/profile.d/antlr4.sh
 
+# Required by GUI applications
+RUN yum install -y libXext libXrender libXtst && yum clean all
+
 WORKDIR /root
