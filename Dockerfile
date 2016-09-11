@@ -5,7 +5,7 @@ MAINTAINER Yi Ou
 RUN yum update -y && yum clean all
 
 # Command-line tools and config files
-RUN yum install -y epel-release man which tree bash-completion vim-enhanced git rpm-build tmux pdsh bc wget && yum clean all
+RUN yum install -y epel-release man which tree bash-completion vim-enhanced git rpm-build tmux pdsh bc wget telnet net-tools lsof && yum clean all
 
 COPY gitconfig  /root/.gitconfig
 COPY vimrc /root/.vimrc
