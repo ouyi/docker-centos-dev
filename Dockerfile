@@ -1,6 +1,9 @@
 FROM centos:latest
 MAINTAINER Yi Ou
 
+# Make man pages work
+RUN sed -i 's/tsflags=nodocs//g' /etc/yum.conf
+
 # Update the image with the latest packages (recommended)
 RUN yum update -y && yum clean all
 
