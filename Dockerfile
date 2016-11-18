@@ -32,7 +32,7 @@ ENV JAVA_BUILD_NUM b15
 
 RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_BUILD_NUM/jdk-$JAVA_VERSION-linux-x64.rpm" -O /tmp/jdk-8-linux-x64.rpm
 
-RUN yum -y install /tmp/jdk-8-linux-x64.rpm && rm /tmp/jdk-8-linux-x64.rpm
+RUN yum -y install /tmp/jdk-8-linux-x64.rpm && rm -f /tmp/jdk-8-linux-x64.rpm
 
 # For some reason, the alternatives install does not work for jar and javaws
 #RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000 && alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 200000
@@ -56,7 +56,7 @@ COPY config/antlr4.sh /etc/profile.d/antlr4.sh
 
 # Install packer
 RUN wget https://releases.hashicorp.com/packer/0.10.2/packer_0.10.2_linux_amd64.zip -O /tmp/packer.zip
-RUN unzip /tmp/packer.zip -d /usr/local/packer && ln -s /usr/local/packer/packer /usr/local/bin/packer.io && rm /tmp/packer.zip
+RUN unzip /tmp/packer.zip -d /usr/local/packer && ln -s /usr/local/packer/packer /usr/local/bin/packer.io && rm -f /tmp/packer.zip
 
 # Required by GUI applications
 RUN yum install -y libXext libXrender libXtst && yum clean all
