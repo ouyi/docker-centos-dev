@@ -39,7 +39,7 @@ RUN curl http://www.antlr.org/download/${ANTLR_JAR} -o /usr/local/lib/${ANTLR_JA
 COPY config/antlr4.sh /etc/profile.d/antlr4.sh
 
 # Install packer
-RUN wget https://releases.hashicorp.com/packer/0.10.2/packer_0.10.2_linux_amd64.zip -O /tmp/packer.zip
+RUN wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip -O /tmp/packer.zip
 RUN unzip /tmp/packer.zip -d /usr/local/packer && ln -s /usr/local/packer/packer /usr/local/bin/packer.io && rm -f /tmp/packer.zip
 
 # Required by GUI applications
