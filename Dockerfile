@@ -29,27 +29,9 @@ RUN yum -y install nodejs ruby && yum clean all
 RUN gem install sass && npm install -g grunt-cli
 
 # Install java and maven
-ENV JAVA_VERSION 8u112
-ENV JAVA_BUILD_NUM b15
-
-RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$JAVA_BUILD_NUM/jdk-$JAVA_VERSION-linux-x64.rpm" -O /tmp/jdk-8-linux-x64.rpm
-
-RUN yum -y install /tmp/jdk-8-linux-x64.rpm && rm -f /tmp/jdk-8-linux-x64.rpm
-
-# For some reason, the alternatives install does not work for jar and javaws
-#RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 200000 && alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 200000
+RUN yum -y install java-1.8.0-openjdk-devel.x86_64 maven && yum clean all
 COPY config/java_env.sh /etc/profile.d/java_env.sh
-
-ENV MAVEN_VERSION 3.3.9
-
-RUN mkdir -p /usr/share/maven \
-    && curl -fsSL http://www-eu.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar -xzC /usr/share/maven --strip-components=1 \
-    && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-
 COPY config/maven_env.sh /etc/profile.d/maven_env.sh
-
-# The following installs openjdk as dependency, which is not what I want
-#RUN yum -y install maven && yum clean all
 
 # Install antlr4
 ENV ANTLR_JAR antlr-4.5.3-complete.jar
