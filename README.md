@@ -7,6 +7,12 @@ A dockerized development box based on centos 7. More tools will be added.
 
     docker run --rm -ti ouyi/docker-centos-dev 
 
+or
+
+	docker run --privileged --net=host -e LOCAL_USER_ID=$(id -u $USER) -v $HOME/some_home:/home/some_home/home/some_home" --name some_name -ti ouyi/docker-centos-dev
+
+On Fedora 25, I had to either use the `--privileged` option or `sudo setenforce 0` to get around permission issues.
+
 ## Use as a base image
 
 Create a Dockerfile similar to this:
