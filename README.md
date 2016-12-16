@@ -9,7 +9,7 @@ A dockerized development box based on centos 7. More tools will be added.
 
 or
 
-    docker run --net=host -w "/home/$USER" -e LOCAL_USER_NAME=$USER -e LOCAL_USER_ID=$(id -u $USER) -v $HOME/home_$USER:/home/$USER --name some_name -ti ouyi/docker-centos-dev
+    docker run --net=host -w "$HOME" -e USER_NAME=$USER -e USER_HOME="$HOME" -e USER_ID=$(id -u $USER) -v $HOME/home_$USER:/$HOME--name some_name -ti ouyi/docker-centos-dev
 
 On Fedora 25, I had to either use the `--privileged` option or `sudo setenforce 0` to get around permission issues.
 

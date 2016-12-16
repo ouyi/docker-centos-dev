@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Add local user
-# Either use the LOCAL_USER_ID if passed in at runtime or fallback
+# Add container user
+# Either use the settings passed as env vars or the defaults
 
-user_id=${LOCAL_USER_ID:-9001}
-user_name=${LOCAL_USER_NAME:-"user"}
-user_home=${LOCAL_USER_HOME:-"/home/$user_name"}
+user_id=${USER_ID:-9001}
+user_name=${USER_NAME:-"user"}
+user_home=${USER_HOME:-"/home/$user_name"}
 
 echo "user_id: $user_id"
 echo "user_name: $user_name"
