@@ -8,7 +8,7 @@ RUN sed -i 's/tsflags=nodocs//g' /etc/yum.conf
 RUN yum update -y && yum clean all
 
 # Command-line tools and config files
-RUN yum install -y epel-release man which tree bash-completion vim-enhanced git rpm-build tmux pdsh bc wget telnet net-tools lsof socat && yum clean all
+RUN yum install -y epel-release man which tree bash-completion vim-enhanced git rpm-build tmux pdsh bc wget telnet net-tools lsof socat pdsh && yum clean all
 
 COPY config/gitconfig  /root/.gitconfig
 COPY config/vimrc /root/.vimrc
