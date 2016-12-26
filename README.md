@@ -1,7 +1,7 @@
 
-# Docker development environment
+# Dockerized development environment
 
-A dockerized development box based on centos 7. More tools will be added.
+A dockerized development box based on centos 7, with Python, Java, JavaScript (nodejs), Ruby, and some often-used tools.
 
 ## Direct use
 
@@ -20,9 +20,9 @@ Create a Dockerfile similar to this:
     FROM ouyi/docker-centos-dev
     MAINTAINER username
 
-    RUN chmod 4755 /usr/bin/ping
+    RUN echo "Installing more stuff here."
 
-    RUN usernameadd username
+    RUN useradd username
     WORKDIR /home/username
 
 Build it with:
