@@ -18,14 +18,11 @@ RUN cat /tmp/bashrc >> /root/.bashrc  && rm -f /tmp/bashrc
 
 # Install python stuff
 RUN yum -y install python-pip python-paramiko && yum clean all
-
 RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli datadog
 
 # Install javascript stuff
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-
 RUN yum -y install nodejs ruby && yum clean all
-
 RUN gem install sass && npm install -g grunt-cli
 
 # Install java and maven
