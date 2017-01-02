@@ -23,7 +23,7 @@ RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli da
 # Install javascript stuff
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 RUN yum -y install nodejs ruby && yum clean all
-RUN gem install sass && npm install -g grunt-cli
+RUN gem install sass && npm install -g grunt-cli && npm install -g bower
 
 # Install java and maven
 RUN yum -y install java-1.8.0-openjdk-devel.x86_64 maven && yum clean all
