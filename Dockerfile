@@ -4,7 +4,7 @@ MAINTAINER Yi Ou
 # Make man pages work
 RUN sed -i 's/tsflags=nodocs//g' /etc/yum.conf
 
-# Update the image with the latest packages (recommended)
+# Update the image with the latest packages
 RUN yum update -y && yum clean all
 
 # Command-line tools and config files
@@ -16,19 +16,20 @@ COPY config/tmux.conf /root/.tmux.conf
 COPY config/bashrc /tmp/bashrc
 RUN cat /tmp/bashrc >> /root/.bashrc  && rm -f /tmp/bashrc
 
-# Install python stuff
+# Install Python stuff
 RUN yum -y install python-pip python-paramiko && yum clean all
 RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli datadog
 
-# Install javascript stuff
+# Install JavaScript stuff
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 RUN yum -y install nodejs ruby && yum clean all
-RUN gem install sass && npm install -g grunt-cli && npm install -g bower
+RUN gem install sass && npm install -g grunt-cli && npm install -g bower && npm install -g http-server
 
-# Install java and maven
-RUN yum -y install java-1.8.0-openjdk-devel.x86_64 maven && yum clean all
+# Install Java, Maven, and Ant
+RUN yum -y install java-1.8.0-openjdk-devel.x86_64 maven ant && yum clean all
 COPY config/java_env.sh /etc/profile.d/java_env.sh
 COPY config/maven_env.sh /etc/profile.d/maven_env.sh
+COPY config/ant_env.sh /etc/profile.d/ant_env.sh
 
 # Install antlr4
 ENV ANTLR_JAR antlr-4.5.3-complete.jar
