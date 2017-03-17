@@ -60,5 +60,9 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
+# Install groovy
+RUN wget https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-2.4.9.zip -O /tmp/groovy.zip && unzip /tmp/groovy.zip -d /opt/groovy && rm -f /tmp/groovy.zip
+COPY config/groovy_env.sh /etc/profile.d/groovy_env.sh
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]
