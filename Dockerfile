@@ -61,8 +61,20 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Install groovy
-RUN wget https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-2.4.9.zip -O /tmp/groovy.zip && unzip /tmp/groovy.zip -d /opt/groovy && rm -f /tmp/groovy.zip
+RUN groovy_version=2.4.9 \
+    && wget "https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-${groovy_version}.zip" -O /tmp/groovy.zip \
+    && unzip /tmp/groovy.zip -d /opt/groovy \
+    && rm -f /tmp/groovy.zip
+    && ln -sfnv "groovy-${groovy_version}" /opt/groovy/latest
 COPY config/groovy_env.sh /etc/profile.d/groovy_env.sh
+
+# Install gradle
+RUN gradle_version=3.4.1 \
+    && wget "http://downloads.gradle.org/distributions/gradle-${gradle_version}-bin.zip" -O /tmp/gradle.zip \
+    && unzip /tmp/gradle.zip -d /opt/gradle \
+    && rm -f /tmp/gradle.zip \
+    && ln -sfnv "gradle-${gradle_version}" /opt/gradle/latest
+COPY config/gradle_env.sh /etc/profile.d/gradle_env.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]
