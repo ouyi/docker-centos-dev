@@ -64,7 +64,7 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN groovy_version=2.4.9 \
     && wget "https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-${groovy_version}.zip" -O /tmp/groovy.zip \
     && unzip /tmp/groovy.zip -d /opt/groovy \
-    && rm -f /tmp/groovy.zip
+    && rm -f /tmp/groovy.zip \
     && ln -sfnv "groovy-${groovy_version}" /opt/groovy/latest
 COPY config/groovy_env.sh /etc/profile.d/groovy_env.sh
 
