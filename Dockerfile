@@ -76,5 +76,16 @@ RUN gradle_version=3.4.1 \
     && ln -sfnv "gradle-${gradle_version}" /opt/gradle/latest
 COPY config/gradle_env.sh /etc/profile.d/gradle_env.sh
 
+# Install/upgrade ruby and jekyll
+
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
+    && curl -L get.rvm.io | bash -s stable \
+    && source /etc/profile.d/rvm.sh \
+    && rvm reload \
+    && rvm requirements run \
+    && rvm install 2.4.0 \
+    && rvm use 2.4.0 --default \
+    && gem install jekyll bundler
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]
