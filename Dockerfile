@@ -22,8 +22,8 @@ RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli da
 
 # Install JavaScript stuff
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-RUN yum -y install nodejs ruby && yum clean all
-RUN gem install sass && npm install -g grunt-cli && npm install -g bower && npm install -g http-server
+RUN yum -y install nodejs && yum clean all
+RUN npm install -g grunt-cli && npm install -g bower && npm install -g http-server
 
 # Install Java, Maven, and Ant
 RUN yum -y install java-1.8.0-openjdk-devel.x86_64 maven ant && yum clean all
@@ -77,7 +77,6 @@ RUN gradle_version=3.4.1 \
 COPY config/gradle_env.sh /etc/profile.d/gradle_env.sh
 
 # Install/upgrade ruby and jekyll
-
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && curl -L get.rvm.io | bash -s stable \
     && source /etc/profile.d/rvm.sh \
@@ -85,7 +84,7 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && rvm requirements run \
     && rvm install 2.4.0 \
     && rvm use 2.4.0 --default \
-    && gem install jekyll bundler
+    && gem install jekyll bundler sass
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]
