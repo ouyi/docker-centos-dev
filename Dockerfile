@@ -82,8 +82,8 @@ RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
     && bash -l -c 'source /etc/profile.d/rvm.sh \
     && rvm reload \
     && rvm requirements run \
-    && rvm install 2.4.0 \
-    && rvm use 2.4.0 --default \
+    && rvm install 2.4.1 \
+    && rvm use 2.4.1 --default \
     && gem install jekyll bundler sass'
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
