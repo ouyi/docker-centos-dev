@@ -81,7 +81,8 @@ RUN spring_boot_cli_version=1.5.8.RELEASE \
     && wget "https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/${spring_boot_cli_version}/spring-boot-cli-${spring_boot_cli_version}-bin.zip" -O /tmp/spring-boot-cli.zip \
     && unzip /tmp/spring-boot-cli.zip -d /opt/spring-boot-cli \
     && rm -f /tmp/spring-boot-cli.zip \
-    && ln -sfnv "spring-boot-cli-${spring_boot_cli_version}" /opt/spring-boot-cli/latest
+    && ln -sfnv "spring-boot-cli-${spring_boot_cli_version}" /opt/spring-boot-cli/latest \
+    && ln -s /opt/spring-boot-cli/latest/shell-completion/bash/spring /etc/bash_completion.d/
 COPY config/spring_env.sh /etc/profile.d/spring_env.sh
 
 # Install/upgrade ruby and jekyll
