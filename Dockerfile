@@ -8,7 +8,7 @@ RUN sed -i 's/tsflags=nodocs//g' /etc/yum.conf
 RUN yum update -y && yum clean all
 
 # Command-line tools and config files
-RUN yum install -y epel-release man which tree bash-completion vim-enhanced git rpm-build tmux pdsh bc wget telnet net-tools lsof socat pdsh ascii iotop && yum clean all
+RUN yum install -y epel-release man which tree bash-completion vim-enhanced git rpm-build tmux pdsh bc wget telnet net-tools lsof socat ascii iotop && yum clean all
 
 COPY config/gitconfig  /root/.gitconfig
 COPY config/vimrc /root/.vimrc
@@ -75,6 +75,14 @@ RUN gradle_version=3.4.1 \
     && rm -f /tmp/gradle.zip \
     && ln -sfnv "gradle-${gradle_version}" /opt/gradle/latest
 COPY config/gradle_env.sh /etc/profile.d/gradle_env.sh
+
+# Install spring-boot-cli
+RUN spring_boot_cli_version=1.5.8.RELEASE \
+    && wget "https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/${spring_boot_cli_version}/spring-boot-cli-${spring_boot_cli_version}-bin.zip" -O /tmp/spring-boot-cli.zip \
+    && unzip /tmp/spring-boot-cli.zip -d /opt/spring-boot-cli \
+    && rm -f /tmp/spring-boot-cli.zip \
+    && ln -sfnv "spring-boot-cli-${spring_boot_cli_version}" /opt/spring-boot-cli/latest
+COPY config/spring_env.sh /etc/profile.d/spring_env.sh
 
 # Install/upgrade ruby and jekyll
 RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import - \
