@@ -108,6 +108,7 @@ augroup END
 set ic
 autocmd BufNewFile,BufRead *.json setlocal syntax=javascript
 au BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 set tabstop=4
 set shiftwidth=4
