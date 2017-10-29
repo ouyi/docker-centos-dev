@@ -3,6 +3,15 @@
 
 A dockerized development box based on centos 7, with Python, Java, JavaScript (nodejs), Ruby, and some often-used tools.
 
+Currently installed: 
+- python 2.7.5
+- nodejs v6.11.3
+- ruby 2.4.1p111
+- openjdk 1.8.0\_144
+- groovy 2.4.9
+
+Please feel free to open feature requests and pull requests if anything reasonable is missing.
+
 ## Direct use
 
     docker run --rm -ti ouyi/docker-centos-dev 
