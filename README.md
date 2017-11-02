@@ -3,7 +3,7 @@
 
 A dockerized development box based on centos 7, with Python, Java, JavaScript (nodejs), Ruby, and some often-used tools.
 
-Currently installed: 
+Currently installed:
 - python 2.7.5
 - nodejs v6.11.3
 - ruby 2.4.1p111
