@@ -22,7 +22,7 @@ RUN yum -y install python-pip python-paramiko && yum clean all
 RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli datadog
 
 # Install JavaScript stuff
-RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 RUN yum -y install nodejs && yum clean all
 RUN npm install -g grunt-cli && npm install -g bower && npm install -g http-server
 
