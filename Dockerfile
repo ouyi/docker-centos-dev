@@ -70,7 +70,7 @@ RUN groovy_version=2.4.15 \
 COPY config/groovy_env.sh /etc/profile.d/groovy_env.sh
 
 # Install gradle
-RUN gradle_version=3.4.1 \
+RUN gradle_version=4.5.1 \
     && wget "http://downloads.gradle.org/distributions/gradle-${gradle_version}-bin.zip" -O /tmp/gradle.zip \
     && unzip /tmp/gradle.zip -d /opt/gradle \
     && rm -f /tmp/gradle.zip \
