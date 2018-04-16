@@ -18,8 +18,8 @@ COPY config/bashrc /tmp/bashrc
 RUN cat /tmp/bashrc >> /root/.bashrc  && rm -f /tmp/bashrc
 
 # Install Python stuff
-RUN yum -y install python-pip python-paramiko && yum clean all
-RUN pip install --upgrade pip && pip install radon pylint pep8 && pip install ansible awscli datadog
+RUN yum -y install python-pip && yum clean all
+RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli datadog
 
 # Install JavaScript stuff
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
