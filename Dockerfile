@@ -19,7 +19,7 @@ RUN cat /tmp/bashrc >> /root/.bashrc  && rm -f /tmp/bashrc
 
 # Install Python stuff
 RUN yum -y install python-pip python-paramiko && yum clean all
-RUN pip install --upgrade pip && pip install radon pylint pep8 ansible awscli datadog
+RUN pip install --upgrade pip && pip install radon pylint pep8 && pip install ansible awscli datadog
 
 # Install JavaScript stuff
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
@@ -38,12 +38,12 @@ RUN curl http://www.antlr.org/download/${ANTLR_JAR} -o /usr/local/lib/${ANTLR_JA
 COPY config/antlr4.sh /etc/profile.d/antlr4.sh
 
 # Install Apache Pig local mode
-RUN wget http://apache.mirrors.pair.com/pig/pig-0.16.0/pig-0.16.0.tar.gz -O /tmp/pig.tar.gz
+RUN wget http://apache.mirrors.pair.com/pig/pig-0.17.0/pig-0.17.0.tar.gz -O /tmp/pig.tar.gz
 RUN tar xzf /tmp/pig.tar.gz -C /usr/local/
 COPY config/pig_env.sh /etc/profile.d/pig_env.sh
 
 # Install packer
-RUN wget https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip -O /tmp/packer.zip
+RUN wget https://releases.hashicorp.com/packer/1.2.2/packer_1.2.2_linux_amd64.zip -O /tmp/packer.zip
 RUN unzip /tmp/packer.zip -d /usr/local/packer && ln -s /usr/local/packer/packer /usr/local/bin/packer.io && rm -f /tmp/packer.zip
 
 # Required by GUI applications
@@ -62,7 +62,7 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Install groovy
-RUN groovy_version=2.4.9 \
+RUN groovy_version=2.4.15 \
     && wget "https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-${groovy_version}.zip" -O /tmp/groovy.zip \
     && unzip /tmp/groovy.zip -d /opt/groovy \
     && rm -f /tmp/groovy.zip \
