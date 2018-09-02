@@ -78,7 +78,7 @@ RUN gradle_version=4.5.1 \
 COPY config/gradle_env.sh /etc/profile.d/gradle_env.sh
 
 # Install spring-boot-cli
-RUN spring_boot_cli_version=1.5.8.RELEASE \
+RUN spring_boot_cli_version=2.0.1.RELEASE \
     && wget "https://repo.spring.io/release/org/springframework/boot/spring-boot-cli/${spring_boot_cli_version}/spring-boot-cli-${spring_boot_cli_version}-bin.zip" -O /tmp/spring-boot-cli.zip \
     && unzip /tmp/spring-boot-cli.zip -d /opt/spring-boot-cli \
     && rm -f /tmp/spring-boot-cli.zip \
