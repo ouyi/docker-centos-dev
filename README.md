@@ -22,6 +22,10 @@ or
 
 On Fedora 25, I had to either use the `--privileged` option or `sudo setenforce 0` to get around permission issues.
 
+On macOS Mojave, I am using the following command to run it:
+
+    docker run --dns-search mydomain.com -p 8000-8020:8000-8020 -w /home/ouyi -e USER_NAME=ouyi -e USER_HOME=/home/ouyi -e USER_ID=$(id -u ouyi) -v /Users/ouyi/home_ouyi:/home/ouyi --name centos-ouyi -ti ouyi/docker-centos-dev:1.2.2
+
 ## Use as a base image
 
 Create a Dockerfile similar to this:
